@@ -1,10 +1,37 @@
-<table>
-    <thead>
-        <th>ФИО</th>
-        <th>Номер телефона</th>
-        <th>Фото</th>
-    </thead>
-    <tbody>
-        <tr tr-row ng-repeat="row in personList" scdata="d"></tr>
-    </tbody>
-</table>
+<div class="container-fluid">
+    <div class="row justify-content-center align-items-center ">
+        <div class="col-12 ">
+            <table>
+                <thead>
+                    <tr>
+                        <th>№</th>
+                        <th>
+                            <a href="" ng-click="sort('name')">
+                                ФИО
+                            </a>
+                        </th>
+                        <th>Номер телефона</th>
+                        <th>Эл. почта</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr tr-row ng-repeat="person in listPerson | orderBy:sortField:reverse">
+                        <td>{{$index + 1}}</td>
+                        <td>{{person.name}}</td>
+                        <td>{{person.phone}}</td>
+                        <td>{{person.email}}</td>
+                        <td>
+                            <div class="btn-group" role="group" aria-label="Person edit">
+                                <button type="button" class="btn btn-primary"
+                                    ng-click="editPerson($index)">Редактировать</button>
+                                <button type="button" class="btn btn-danger"
+                                    ng-click="deletePerson($index)">Удалить</button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
